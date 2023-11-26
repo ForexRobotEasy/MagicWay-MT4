@@ -1,0 +1,61 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                             MagicWay MT4         |
+//|                                           forexroboteasy.com     |
+//|                                           Forex Robot Easy Team  |
+//+------------------------------------------------------------------+
+
+//+------------------------------------------------------------------+
+//|                        Global Variables                           |
+//+------------------------------------------------------------------+
+string[] supportedPairs = {'AUDNZD', 'NZDCAD', 'AUDCAD'};
+int chartTimeframe = PERIOD_M1;
+
+//+------------------------------------------------------------------+
+//|                     Expert Advisor Functions                      |
+//+------------------------------------------------------------------+
+void OnInit()
+{
+    // Register supported currency pairs
+    for(int i=0; i<ArraySize(supportedPairs); i++)
+        SymbolSelect(supportedPairs[i], true);
+}
+
+void OnTick()
+{
+    // Trading logic goes here
+    // ...
+}
+
+//+------------------------------------------------------------------+
+//|                        Helper Functions                           |
+//+------------------------------------------------------------------+
+void SetChartTimeframe(int timeframe)
+{
+    ChartSetInteger(0, CHART_PERIOD, timeframe);
+}
+
+//+------------------------------------------------------------------+
+//|                  Execution Entry Point                            |
+//+------------------------------------------------------------------+
+void OnStart()
+{
+    // Set chart timeframe to the first currency pair
+    SetChartTimeframe(chartTimeframe);
+
+    // Run the MagicWay trading algorithm
+    RunMagicWay();
+}
+
+void RunMagicWay()
+{
+    // Perform trading operations for supported currency pairs
+    for(int i=0; i<ArraySize(supportedPairs); i++)
+    {
+        string symbol = supportedPairs[i];
+        // ...
+        // Trading operations for the current symbol
+        // ...
+        Print('Trading operations for ', symbol, ' completed successfully.');
+    }
+}
